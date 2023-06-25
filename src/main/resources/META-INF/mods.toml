@@ -1,0 +1,13 @@
+modLoader="javafml" #mandatory
+
+loaderVersion="${loader_version_range}"
+
+license="All rights reserved"
+
+[[mods]]
+modId="meteorpuxiidea"
+version="${mod_version}"
+displayName="MeteorPuxiIdea"
+authors="ExtraMeteorP"
+description='''
+'''
