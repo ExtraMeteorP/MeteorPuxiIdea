@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "package": "com.meteor.meteorpuxiidea.mixin",
+  "mixins": [
+
+  ],
+  "client": [
+    "LevelRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "meteorpuxiidea.refmap.json"
+}

@@ -19,6 +19,8 @@ public class MeteorPuxiIdea {
         ModItems.REGISTER.register(eventBus);
         ModEntities.REGISTER.register(eventBus);
 
+        eventBus.addListener(ModItems::addCreative);
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }

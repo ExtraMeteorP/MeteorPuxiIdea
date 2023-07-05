@@ -16,7 +16,7 @@ public class ClientHandler {
         IEventBus bus = MinecraftForge.EVENT_BUS;
         bus.addListener((RenderLevelStageEvent evt)->{
             if(evt.getStage() == RenderLevelStageEvent.Stage.AFTER_CUTOUT_BLOCKS){
-                PaintPreview.onRenderWorldLast(evt.getCamera(), evt.getPartialTick(), evt.getPoseStack());
+                //PaintPreview.onRenderWorldLast(evt.getCamera(), evt.getPartialTick(), evt.getPoseStack());
             }
         });
     }

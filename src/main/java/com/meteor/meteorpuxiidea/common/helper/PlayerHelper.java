@@ -1,4 +1,4 @@
-package com.meteor.meteorpuxiidea.common;
+package com.meteor.meteorpuxiidea.common.helper;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;

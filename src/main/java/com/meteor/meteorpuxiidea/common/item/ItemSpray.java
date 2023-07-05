@@ -1,27 +1,9 @@
 package com.meteor.meteorpuxiidea.common.item;
 
-import com.meteor.meteorpuxiidea.client.MiscellaneousModels;
 import com.meteor.meteorpuxiidea.client.VecHelper;
-import com.meteor.meteorpuxiidea.client.renderer.RenderPaint;
-import com.meteor.meteorpuxiidea.common.ItemNBTHelper;
-import com.meteor.meteorpuxiidea.common.PlayerHelper;
+import com.meteor.meteorpuxiidea.common.helper.ItemNBTHelper;
 import com.meteor.meteorpuxiidea.common.entity.EntityPaint;
-import com.meteor.meteorpuxiidea.common.entity.ModEntities;
-import com.meteor.meteorpuxiidea.common.lib.LibMisc;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderBuffers;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.Direction;
+import com.meteor.meteorpuxiidea.common.helper.PaintHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -30,16 +12,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.lwjgl.opengl.GL11;
+
 
 import java.util.List;
 
 public class ItemSpray extends Item {
-    private static final String TAG_PAINTTYPE = "painttype";
-    public static final int iconTypes = 3;
+    public static final String TAG_PAINTTYPE = "painttype";
+    public static final int iconTypes = 16;
 
     public ItemSpray(Properties prop) {
         super(prop);
@@ -48,10 +27,12 @@ public class ItemSpray extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
-        if(player.isCrouching()){
+        if(!level.isClientSide() && player.isCrouching()){
+            List<Integer> paints = PaintHelper.getAllPaint(player);
             int type = ItemNBTHelper.getInt(itemstack, TAG_PAINTTYPE, 0);
-            type = (type + 1) % iconTypes;
-            ItemNBTHelper.setInt(itemstack, TAG_PAINTTYPE, type);
+            int index = paints.indexOf(type);
+            index = (index + 1) % paints.size();
+            ItemNBTHelper.setInt(itemstack, TAG_PAINTTYPE, paints.get(index));
         }
         return InteractionResultHolder.pass(itemstack);
     }

@@ -68,7 +68,7 @@ public class RenderPaint extends EntityRenderer<EntityPaint> {
 
         ms.pushPose();
         ms.mulPose(VecHelper.rotateY(180f));
-        ms.translate(-0.5, -0.5, -0.06);
+        ms.translate(-0.5, -0.5, -0.075);
         ms.scale(1f, 1f, 0.2f);
         VertexConsumer buffer = buffers.getBuffer(Sheets.translucentItemSheet());
         Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(ms.last(), buffer, null, model, 1, 1, 1, 0xF000F0, OverlayTexture.NO_OVERLAY);

@@ -1,4 +1,4 @@
-package com.meteor.meteorpuxiidea.common;
+package com.meteor.meteorpuxiidea.common.helper;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
