@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "meteorpuxiidea:item/paintcollection"
+    "layer0": "meteorpuxiidea:item/paint_32"
   }
 }

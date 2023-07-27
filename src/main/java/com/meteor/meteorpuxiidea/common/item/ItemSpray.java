@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ItemSpray extends Item {
     public static final String TAG_PAINTTYPE = "painttype";
-    public static final int iconTypes = 16;
+    public static final int iconTypes = 42;
 
     public ItemSpray(Properties prop) {
         super(prop);
@@ -40,7 +40,7 @@ public class ItemSpray extends Item {
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
         if(ctx.getLevel() != null && !ctx.getPlayer().isCrouching()){
-            List<EntityPaint> paints = ctx.getLevel().getEntitiesOfClass(EntityPaint.class, VecHelper.boxForRange(ctx.getClickLocation(), 3d));
+            List<EntityPaint> paints = ctx.getLevel().getEntitiesOfClass(EntityPaint.class, VecHelper.boxForRange(ctx.getClickLocation(), 1d));
             int maxDepth = 0;
             for(EntityPaint paint : paints){
                 maxDepth = Math.max(maxDepth, paint.getPaintDepth());
@@ -51,11 +51,23 @@ public class ItemSpray extends Item {
             paint.setPaintType(ItemNBTHelper.getInt(ctx.getItemInHand(), TAG_PAINTTYPE, 0));
             paint.setPaintDirection(ctx.getClickedFace());
             paint.setPaintRotation(ctx.getPlayer().getYRot());
+            paint.setPaintPermanent(isCreativeSpray());
             if(!ctx.getLevel().isClientSide()){
                 ctx.getLevel().addFreshEntity(paint);
             }
+            if(!isCreativeSpray() && !ctx.getPlayer().isCreative()){
+                ItemStack stack = ctx.getItemInHand();
+                stack.setDamageValue(stack.getDamageValue() + 1);
+                if(stack.getDamageValue() >= stack.getMaxDamage()){
+                    stack.shrink(1);
+                }
+            }
         }
         return InteractionResult.PASS;
+    }
+
+    public boolean isCreativeSpray(){
+        return false;
     }
 
 }

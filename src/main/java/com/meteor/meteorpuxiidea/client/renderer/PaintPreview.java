@@ -42,7 +42,7 @@ public final class PaintPreview {
             ms.translate(-renderPosX, -renderPosY, -renderPosZ);
             ms.translate(vec.x, vec.y, vec.z);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 0.4F);
-            RenderPaint.renderPaint(ItemNBTHelper.getInt(stack, "painttype", 0), player.getYRot(), 10, direction, ms, bufferSource);
+            RenderPaint.renderPaint(ItemNBTHelper.getInt(stack, "painttype", 0), player.getYRot(), 20, direction, ms, bufferSource);
             ms.popPose();
         }
     }
