@@ -3,8 +3,6 @@ package com.meteor.meteorpuxiidea.common;
 import com.meteor.meteorpuxiidea.common.helper.PaintHelper;
 import com.meteor.meteorpuxiidea.common.network.NetworkHandler;
 import com.meteor.meteorpuxiidea.common.network.client.AllPaintPacket;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;

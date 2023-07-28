@@ -1,0 +1,18 @@
+{
+  "music.spacewalk": {
+    "sounds": [
+      {
+        "name": "meteorpuxiidea:music/spacewalk",
+        "stream": true
+      }
+    ]
+  },
+  "music.wildfire": {
+    "sounds": [
+      {
+        "name": "meteorpuxiidea:music/wildfire",
+        "stream": true
+      }
+    ]
+  }
+}
