@@ -1,5 +1,6 @@
 package com.meteor.meteorpuxiidea.client;
 
+import com.meteor.meteorpuxiidea.client.renderer.PerspectiveBakedModel;
 import com.meteor.meteorpuxiidea.common.item.ItemSpray;
 import com.meteor.meteorpuxiidea.common.lib.LibMisc;
 import net.minecraft.client.resources.model.BakedModel;

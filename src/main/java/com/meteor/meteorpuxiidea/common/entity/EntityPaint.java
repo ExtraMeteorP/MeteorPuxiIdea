@@ -5,8 +5,11 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public class EntityPaint extends Entity {
@@ -43,6 +46,20 @@ public class EntityPaint extends Entity {
         this.entityData.define(TYPE, 0);
         this.entityData.define(DIRECTION, Direction.EAST);
         this.entityData.define(ROTATION, 0f);
+    }
+
+    @Override
+    public boolean isPickable() {
+        return true;
+    }
+
+    @Override
+    public InteractionResult interact(Player player, InteractionHand hand) {
+        if(player.getItemInHand(hand).isEmpty() && player.isCreative() && player.isCrouching()){
+            this.remove(RemovalReason.KILLED);
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.PASS;
     }
 
     @Override
